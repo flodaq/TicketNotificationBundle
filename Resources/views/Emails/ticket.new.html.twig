@@ -1,0 +1,24 @@
+<html>
+<body>
+<p>{{ 'emails.ticket.new.content'|trans({
+            '%number%': ticket.id,
+            '%sender%': ticket.userCreatedObject.username,
+            '%date%': ticket.createdAt|date('LABEL_DATE_TIME_FORMAT'|trans)
+        }) }}</p>
+<div style="width:100%;background-color:#f0f0f0;border:1px solid #000;">
+    <p style="margin:0;padding:20px 20px 0;"><b>{{ ticket.subject }}</b></p>
+    <ul style="margin:0;padding:5px 20px 0 40px;">
+        <li>{{ 'HEADING_STATUS'|trans }} {{ 'emails.ticket.update.status'|trans({
+                '%status%': ticket.statusString|trans
+            }) }}</li>
+        <li>{{ 'HEADING_PRIORITY'|trans }} {{ 'emails.ticket.update.priority'|trans({
+                '%priority%': ticket.priorityString|trans
+            }) }}</li>
+    </ul>
+    <p style="margin:0;padding:20px;">{{ ticket.messages|last.message|nl2br }}</p>
+</div>
+<p>{{ 'emails.ticket.new.link'|trans({
+            '%link%': url('hackzilla_ticket_show', { 'ticketId': ticket.id })
+        })|raw }}</p>
+</body>
+</html>

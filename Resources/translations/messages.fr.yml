@@ -1,0 +1,19 @@
+emails:
+    ticket:
+        new:
+            subject: '[Nouveau] Le ticket #%number% vient d''être soumis par %sender%'
+            content: 'Le ticket #%number% a été soumis par %sender% le %date%. Voici son contenu :'
+            status: '« %status% »'
+            priority: '« %priority% »'
+            link: 'Pour consulter les détails du ticket et y répondre, veuillez suivre <a href="%link%">ce lien</a>.'
+            plainlink: 'Pour consulter les détails du ticket et y répondre, veuillez suivre ce lien : %link%.'
+        update:
+            subject: '[Mise à jour] Le ticket #%number% vient d''être mis à jour par %sender%'
+            content: 'Le ticket #%number% a été mis à jour par %sender% le %date%. Voici son commentaire :'
+            status: '« %status% »'
+            priority: '« %priority% »'
+            link: 'Pour consulter les détails du ticket et y répondre, veuillez suivre <a href="%link%">ce lien</a>.'
+            plainlink: 'Pour consulter les détails du ticket et y répondre, veuillez suivre ce lien : %link%.'
+        delete:
+            subject: '[Suppression] Le ticket #%number% vient d''être supprimé par %sender%'
+            content: 'Le ticket #%number% a été supprimé par %sender% le %date%. Voici son commentaire :'

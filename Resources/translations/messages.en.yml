@@ -1,0 +1,16 @@
+emails:
+    ticket:
+        new:
+            subject: '[New] The ticket #%number% has been submitted by %sender%'
+            content: 'The ticket #%number% has been submitted by %sender% on %date%. Here is its content:'
+            status: '"%status%"'
+            priority: '"%priority%"'
+            link: 'To view the ticket and answer to it, please follow <a href="%link%">this link</a>.'
+            plainlink: 'To view the ticket and answer to it, please follow this link: %link%.'
+        update:
+            subject: '[Update] The ticket #%number% has been updated by %sender%'
+            content: 'The ticket %number% has been updated by %sender% on %date%. Here is its comment:'
+            status: '"%status%"'
+            priority: '"%priority%"'
+            link: 'To view the ticket and answer to it, please follow <a href="%link%">this link</a>.'
+            plainlink: 'To view the ticket and answer to it, please follow this link: %link%.'

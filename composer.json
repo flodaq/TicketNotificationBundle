@@ -1,0 +1,35 @@
+{
+    "name": "flodaq/ticket-notification--bundle",
+    "description": "This bundle provides e-mails notifications for Hackzilla Ticketing Symfony bundle every time a ticket is created or modified.",
+    "keywords": [
+        "ticket",
+        "ticketing",
+        "help desk",
+        "helpdesk",
+        "support",
+        "multilingual",
+        "notification",
+    ],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Florent DAQUET",
+            "email": "flodaq@flodaq.fr",
+            "homepage": "http://flodaq.fr",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "symfony/symfony": "^2.8 || ^3.0",
+        "sensio/framework-extra-bundle": "^3.0",
+        "hackzilla/ticket-bundle": "^2.0",
+        "vich/uploader-bundle": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flodaq\\TicketNotificationBundle\\": ""
+        }
+    }
+}

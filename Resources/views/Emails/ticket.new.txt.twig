@@ -1,0 +1,24 @@
+{{ 'emails.ticket.new.content'|trans({
+        '%number%': ticket.id,
+        '%sender%': ticket.userCreatedObject.username,
+        '%date%': ticket.createdAt|date('LABEL_DATE_TIME_FORMAT'|trans)
+    }) }}
+
+{{ ticket.subject }}
+* {{ 'HEADING_STATUS'|trans }} {{ 'emails.ticket.update.status'|trans({
+        '%status%': ticket.statusString|trans
+    }) }}
+* {{ 'HEADING_PRIORITY'|trans }} {{ 'emails.ticket.update.priority'|trans({
+        '%priority%': ticket.priorityString|trans
+    }) }}
+
+{{ ticket.subject }}
+{{ ticket.messages|last.message|nl2br }}
+{% if ticket.messages|last.attachmentName %}
+{{ 'LABEL_ATTACHMENT'|trans({}, 'HackzillaTicketBundle') }}
+{{ ticket.messages|last.attachmentName }}
+{% endif %}
+
+{{ 'emails.ticket.new.plainlink'|trans({
+        '%link%': url('hackzilla_ticket_show', { 'ticketId': ticket.id })
+    }) }}
