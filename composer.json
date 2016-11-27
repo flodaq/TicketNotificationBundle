@@ -8,7 +8,7 @@
         "helpdesk",
         "support",
         "multilingual",
-        "notification",
+        "notification"
     ],
     "type": "symfony-bundle",
     "license": "MIT",
