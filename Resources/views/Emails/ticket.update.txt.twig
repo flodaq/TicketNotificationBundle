@@ -1,7 +1,7 @@
 {{ 'emails.ticket.update.content'|trans({
         '%number%': ticket.id,
-        '%sender%': ticket.userCreatedObject.username,
-        '%date%': ticket.createdAt|date('LABEL_DATE_TIME_FORMAT'|trans)
+        '%sender%': ticket.messages|last.message.userObject.username,
+        '%date%': ticket.messages|last.message|date('LABEL_DATE_TIME_FORMAT'|trans)
     }) }}
 
 {{ ticket.subject }}
