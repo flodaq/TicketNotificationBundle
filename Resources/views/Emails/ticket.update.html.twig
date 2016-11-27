@@ -3,7 +3,7 @@
 <p>{{ 'emails.ticket.update.content'|trans({
         '%number%': ticket.id,
         '%sender%': ticket.messages|last.message.userObject.username,
-        '%date%': ticket.messages|last.message|date('LABEL_DATE_TIME_FORMAT'|trans)
+        '%date%': ticket.messages|last.createdAt|date('LABEL_DATE_TIME_FORMAT'|trans)
     }) }}</p>
 <div style="width:100%;background-color:#f0f0f0;border:1px solid #000;">
     <p style="margin:0;padding:20px 20px 0;"><b>{{ ticket.subject }}</b></p>
