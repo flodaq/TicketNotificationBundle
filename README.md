@@ -68,10 +68,10 @@ config.yml
 
     flodaq_hackzilla_ticket_notification:
         templates:
-            new_html:       'FlodaqTicketNotificationBundle:Emails:ticket.new.html.twig'
-            new_txt:        'FlodaqTicketNotificationBundle:Emails:ticket.new.txt.twig'
-            update_html:    'FlodaqTicketNotificationBundle:Emails:ticket.update.html.twig'
-            update_txt:     'FlodaqTicketNotificationBundle:Emails:ticket.update.txt.twig'
+            new_html:       'YOURTicketBundle:Emails:ticket.new.html.twig'
+            new_txt:        'YOURTicketBundle:Emails:ticket.new.txt.twig'
+            update_html:    'YOURTicketBundle:Emails:ticket.update.html.twig'
+            update_txt:     'YOURTicketBundle:Emails:ticket.update.txt.twig'
 ```
 
 ## Pull requests
