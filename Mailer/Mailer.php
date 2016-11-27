@@ -4,6 +4,7 @@ namespace Flodaq\TicketNotificationBundle\Mailer;
 
 use FOS\UserBundle\Doctrine\UserManager;
 use FOS\UserBundle\Model\User;
+use Hackzilla\Bundle\TicketBundle\Entity\TicketMessage;
 use Hackzilla\Bundle\TicketBundle\Entity\TicketWithAttachment;
 use Hackzilla\Bundle\TicketBundle\TicketEvents;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -64,21 +65,27 @@ class Mailer
                 return null;
         }
 
+        /** @var TicketMessage $message */
+        $message = $ticket->getMessages()->last();
+
         /** @var UserManager $userManager */
         $userManager = $this->container->get('fos_user.user_manager');
         $users = $userManager->findUsers();
 
         // Prepare the recipients
         // At least the ticket's owner must receive the notification
-        $recipients = array(
-            $creator->getEmail(),
-        );
+        $recipients = array();
 
+        if ($message->getUser() !== $creator->getId()) {
+            $recipients[] = $creator->getEmail();
+        }
+        
         // Add every user with the ROLE_TICKET_ADMIN role
         /** @var User $user */
         foreach ($users as $user) {
             if ($user->hasRole('ROLE_TICKET_ADMIN')) {
-                if (!in_array($user->getEmail(), $recipients)) {
+                if (!in_array($user->getEmail(), $recipients) &&
+                    $message->getUser() !== $user->getId()) {
                     $recipients[] = $user->getEmail();
                 }
             }
