@@ -1,5 +1,5 @@
 {
-    "name": "flodaq/ticket-notification--bundle",
+    "name": "flodaq/ticket-notification-bundle",
     "description": "This bundle provides e-mails notifications for Hackzilla Ticketing Symfony bundle every time a ticket is created or modified.",
     "keywords": [
         "ticket",
