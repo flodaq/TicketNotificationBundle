@@ -55,7 +55,7 @@ Add the following configuration to your config.yml file according to your e-mail
 ```
 config.yml
 
-flodaq_hackzilla_ticket_notification:
+flodaq_ticket_notification:
     emails:
         sender_email:   'email@example.com'
         sender_name:    'Firstname LASTNAME'
@@ -66,7 +66,7 @@ You can override default e-mails templates by configuring your custom ones in th
 ```
 config.yml
 
-    flodaq_hackzilla_ticket_notification:
+    flodaq_ticket_notification:
         templates:
             new_html:       'YOURTicketBundle:Emails:ticket.new.html.twig'
             new_txt:        'YOURTicketBundle:Emails:ticket.new.txt.twig'
