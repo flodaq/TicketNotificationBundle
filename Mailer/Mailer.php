@@ -126,8 +126,7 @@ class Mailer
     private function prepareEmailMessage($subject, $to)
     {
         // Prepare a confirmation e-mail
-        return \Swift_Message::newInstance()
-            ->setSubject($subject)
+        return (new \Swift_Message($subject))
             ->setFrom(array(
                 $this->container->getParameter('flodaq_ticket_notification.emails')['sender_email']
                     => $this->container->getParameter('flodaq_ticket_notification.emails')['sender_name']
