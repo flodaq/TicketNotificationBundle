@@ -1,23 +1,24 @@
+{% set lastMessage = ticket.messages|last %}
 {{ 'emails.ticket.update.content'|trans({
         '%number%': ticket.id,
-        '%sender%': ticket.messages|last.message.userObject.username,
-        '%date%': ticket.messages|last.createdAt|date('LABEL_DATE_TIME_FORMAT'|trans)
-    }) }}
+        '%sender%': lastMessage.userObject.username,
+        '%date%': lastMessage.createdAt|date('LABEL_DATE_TIME_FORMAT'|trans({}, 'HackzillaTicketBundle'))
+    }, 'FlodaqTicketNotificationBundle') }}
 
 {{ ticket.subject }}
-* {{ 'HEADING_STATUS'|trans }} {{ 'emails.ticket.update.status'|trans({
-        '%status%': ticket.statusString|trans
-    }) }}
-* {{ 'HEADING_PRIORITY'|trans }} {{ 'emails.ticket.update.priority'|trans({
-        '%priority%': ticket.priorityString|trans
-    }) }}
+* {{ 'HEADING_STATUS'|trans({}, 'HackzillaTicketBundle') }} {{ 'emails.ticket.update.status'|trans({
+        '%status%': ticket.statusString|trans({}, 'HackzillaTicketBundle')
+    }, 'FlodaqTicketNotificationBundle') }}
+* {{ 'HEADING_PRIORITY'|trans({}, 'HackzillaTicketBundle') }} {{ 'emails.ticket.update.priority'|trans({
+        '%priority%': ticket.priorityString|trans({}, 'HackzillaTicketBundle')
+    }, 'FlodaqTicketNotificationBundle') }}
 
-{{ ticket.messages|last.message|nl2br }}
-{% if ticket.messages|last.attachmentName %}
-{{ 'LABEL_ATTACHMENT'|trans }}
-{{ ticket.messages|last.attachmentName }}
+{{ lastMessage.message|nl2br }}
+{% if lastMessage.attachmentName is defined and lastMessage.attachmentName %}
+{{ 'LABEL_ATTACHMENT'|trans({}, 'HackzillaTicketBundle') }}
+{{ lastMessage.attachmentName }}
 {% endif %}
 
 {{ 'emails.ticket.update.plainlink'|trans({
         '%link%': url('hackzilla_ticket_show', { 'ticketId': ticket.id })
-    }) }}
+    }, 'FlodaqTicketNotificationBundle') }}

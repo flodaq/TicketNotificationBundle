@@ -10,3 +10,4 @@ services:
     flodaq_ticket_notification.mailer:
         class: Flodaq\TicketNotificationBundle\Mailer\Mailer
         arguments: ["@service_container"]
+        public: true
