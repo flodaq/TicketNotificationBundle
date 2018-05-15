@@ -17,9 +17,16 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('flodaq_ticket_notification');
 
-        $treeBuilder->root('flodaq_ticket_notification')
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            // BC for "symfony/config:<4.2"
+            $rootNode = $treeBuilder->root('flodaq_ticket_notification');
+        }
+
+        $rootNode
             ->children()
                 ->arrayNode('emails')
                     ->children()
