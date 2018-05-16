@@ -1,6 +1,6 @@
 {
     "name": "flodaq/ticket-notification-bundle",
-    "description": "This bundle provides e-mails notifications for Hackzilla Ticketing Symfony bundle every time a ticket is created or modified.",
+    "description": "This bundle provides e-mail notifications for HackzillaTicketBundle events.",
     "keywords": [
         "ticket",
         "ticketing",
@@ -22,9 +22,16 @@
     ],
     "require": {
         "php": "^5.6 || ^7.0",
-        "symfony/symfony": "^2.8 || ^3.0",
-        "hackzilla/ticket-bundle": "~3.0@dev",
-        "vich/uploader-bundle": "~1.0"
+        "hackzilla/ticket-bundle": "3.0.x-dev",
+        "symfony/swiftmailer-bundle": "^2.3.9",
+        "symfony/symfony": "^2.8 || ^3.0 || ^4.0"
+    },
+    "require-dev": {
+        "swiftmailer/swiftmailer": "^5.1",
+        "symfony/phpunit-bridge": "^3.2 || ^4.0"
+    },
+    "conflict": {
+        "phpunit/phpunit": "<5.4.3"
     },
     "autoload": {
         "psr-4": {

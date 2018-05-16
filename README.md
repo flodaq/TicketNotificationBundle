@@ -1,7 +1,7 @@
 # E-mails notification for Hackzilla Ticketing Bundle
 Simple add-on bundle that is build on top of Hackzilla Ticketing bundle in order to provide automatic e-mails
-notifications when a ticket is created or modified. The ticket's owner and every user with the role ROLE_TICKET_ADMIN get notified. 
-  
+notifications when a ticket is created or modified. The ticket's owner and every user with the role ROLE_TICKET_ADMIN get notified.
+
 ## Requirements
 * PHP >= 5.6
 * Symfony ~2.8|~3.0
@@ -20,7 +20,7 @@ Make sure HackzillaTicketBundle is already present in your composer.json:
     }
 }
 ```
-Also make sure the Attachments additionnal feature is enabled.
+Also make sure the Attachments additional feature is enabled.
 
 ### Step 2: Download the bundle using composer
 Require the bundle with composer:

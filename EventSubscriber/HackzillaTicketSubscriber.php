@@ -5,7 +5,6 @@ namespace Flodaq\TicketNotificationBundle\EventSubscriber;
 use Flodaq\TicketNotificationBundle\Mailer\Mailer;
 use Hackzilla\Bundle\TicketBundle\Event\TicketEvent;
 use Hackzilla\Bundle\TicketBundle\TicketEvents;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -15,18 +14,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class HackzillaTicketSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var ContainerInterface
+     * @var Mailer
      */
-    private $container;
+    private $mailer;
 
     /**
-     * Mailer constructor.
-     *
-     * @param ContainerInterface $container
+     * @param Mailer $mailer
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(Mailer $mailer)
     {
-        $this->container = $container;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -48,8 +45,6 @@ class HackzillaTicketSubscriber implements EventSubscriberInterface
      */
     public function ticketNotification(TicketEvent $event, $eventName)
     {
-        /** @var Mailer $mailer */
-        $mailer = $this->container->get('flodaq_ticket_notification.mailer');
-        $mailer->sendTicketNotificationEmailMessage($event->getTicket(), $eventName);
+        $this->mailer->sendTicketNotificationEmailMessage($event->getTicket(), $eventName);
     }
 }

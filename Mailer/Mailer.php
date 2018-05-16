@@ -79,7 +79,7 @@ class Mailer
         if ($message->getUser() !== $creator->getId()) {
             $recipients[] = $creator->getEmail();
         }
-        
+
         // Add every user with the ROLE_TICKET_ADMIN role
         /** @var User $user */
         foreach ($users as $user) {

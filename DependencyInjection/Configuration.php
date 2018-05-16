@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->root('flodaq_ticket_notification')
             ->children()
                 ->arrayNode('emails')
+                    ->isRequired()
                     ->children()
                         ->scalarNode('sender_email')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('sender_name')->isRequired()->cannotBeEmpty()->end()

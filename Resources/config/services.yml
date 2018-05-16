@@ -2,7 +2,7 @@ services:
     # Hackzilla TicketEvent subscriber
     flodaq_ticket_notification.hackzilla_ticket_subscriber:
         class: Flodaq\TicketNotificationBundle\EventSubscriber\HackzillaTicketSubscriber
-        arguments: ["@service_container"]
+        arguments: ["@flodaq_ticket_notification.mailer"]
         tags:
             - { name: kernel.event_subscriber }
 
