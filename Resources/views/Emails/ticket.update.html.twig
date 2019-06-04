@@ -1,30 +1,31 @@
 <html>
 <body>
+{% set lastMessage = ticket.messages|last %}
 <p>{{ 'emails.ticket.update.content'|trans({
         '%number%': ticket.id,
-        '%sender%': ticket.messages|last.message.userObject.username,
-        '%date%': ticket.messages|last.createdAt|date('LABEL_DATE_TIME_FORMAT'|trans)
-    }) }}</p>
+        '%sender%': lastMessage.userObject.username,
+        '%date%': lastMessage.createdAt|date('LABEL_DATE_TIME_FORMAT'|trans({}, 'HackzillaTicketBundle'))
+    }, 'FlodaqTicketNotificationBundle') }}</p>
 <div style="width:100%;background-color:#f0f0f0;border:1px solid #000;">
     <p style="margin:0;padding:20px 20px 0;"><b>{{ ticket.subject }}</b></p>
     <ul style="margin:0;padding:5px 20px 0 40px;">
-        <li>{{ 'HEADING_STATUS'|trans }} {{ 'emails.ticket.update.status'|trans({
-                '%status%': ticket.statusString|trans
-            }) }}</li>
-        <li>{{ 'HEADING_PRIORITY'|trans }} {{ 'emails.ticket.update.priority'|trans({
-                '%priority%': ticket.priorityString|trans
-            }) }}</li>
+        <li>{{ 'HEADING_STATUS'|trans({}, 'HackzillaTicketBundle') }} {{ 'emails.ticket.update.status'|trans({
+                '%status%': ticket.statusString|trans({}, 'HackzillaTicketBundle')
+            }, 'FlodaqTicketNotificationBundle') }}</li>
+        <li>{{ 'HEADING_PRIORITY'|trans({}, 'HackzillaTicketBundle') }} {{ 'emails.ticket.update.priority'|trans({
+                '%priority%': ticket.priorityString|trans({}, 'HackzillaTicketBundle')
+            }, 'FlodaqTicketNotificationBundle') }}</li>
     </ul>
-    <p style="margin:0;padding:20px;">{{ ticket.messages|last.message|nl2br }}</p>
-    {% if ticket.messages|last.attachmentName %}
+    <p style="margin:0;padding:20px;">{{ lastMessage.message|nl2br }}</p>
+    {% if lastMessage.attachmentName is defined and lastMessage.attachmentName %}
     <p style="margin:0;padding:0 20px 20px;">
-        {{ 'LABEL_ATTACHMENT'|trans }}
-        {{ ticket.messages|last.attachmentName }}
+        {{ 'LABEL_ATTACHMENT'|trans({}, 'HackzillaTicketBundle') }}
+        {{ lastMessage.attachmentName }}
     </p>
     {% endif %}
 </div>
 <p>{{ 'emails.ticket.update.link'|trans({
         '%link%': url('hackzilla_ticket_show', { 'ticketId': ticket.id })
-    })|raw }}</p>
+    }, 'FlodaqTicketNotificationBundle')|raw }}</p>
 </body>
 </html>
